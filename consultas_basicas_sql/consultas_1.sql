@@ -129,5 +129,30 @@ SELECT * FROM store WHERE store_id = 1 OR manager_staff_id = 2 ORDER BY store_id
 SELECT rental_id, customer_id, rental_date, return_date FROM rental WHERE return_date IS NOT NULL AND customer_id < 50
 ORDER BY rental_date DESC LIMIT 10;
 
+-- 27. Muestra el identificador, título, clasificación y precio de renta de las películas clasificadas como PG o PG-13,
+-- cuyo precio de renta sea mayor que 2.00. Ordena los resultados alfabéticamente por título, omite los primeros
+-- 10 registros y muestra los 10 siguientes.
+SELECT film_id, title, rating, rental_rate FROM film WHERE (rating IN ('PG','PG-13')) and rental_rate > 2.00  ORDER BY title ASC LIMIT 10 OFFSET 10;
 
+-- 28. Muestra el identificador, nombre, apellido e identificador de la tienda de los clientes activos que pertenecen a
+-- la tienda 1. Ordena por identificador del cliente, omite los primeros 15 registros y muestra los siguientes 10.
+
+SELECT customer_id, first_name, last_name, store_id FROM customer WHERE (active=1) and store_id = 1 ORDER BY customer_id ASC LIMIT 10 OFFSET 15; 
+
+-- 29. Muestra el identificador del inventario, identificador de la película e identificador de la tienda de las copias de
+-- películas cuyos identificadores estén entre 100 y 200. Ordena por identificador del inventario, omite los
+-- primeros 5 registros y muestra los siguientes 10.
+SELECT inventory_id, film_id, store_id FROM inventory WHERE (film_id BETWEEN 100 and 200) ORDER BY inventory_id ASC LIMIT 10 OFFSET 5;
+
+-- 30. Muestra el identificador, título, duración, precio de renta y clasificación de las películas que cumplan
+-- simultáneamente las siguientes condiciones:
+-- • Su duración debe ser mayor que 90 minutos.
+-- • Su duración no debe estar entre 120 y 150 minutos.
+-- • Su clasificación no debe ser R ni NC-17.
+-- •	 Su precio de renta debe ser menor o igual a 4.99.
+-- 		Ordena los resultados por duración descendente y después por título ascendente. Omite los primeros 10 registros
+-- 							Y muestra los siguientes 10.
+
+SELECT film_id, title, length, rental_rate, rating FROM film WHERE (length> 90) and (length NOT BETWEEN 120 and 150) 
+and (rating NOT IN ('R','NC-17')) and (rental_rate <= 4.99) ORDER BY length DESC, title ASC LIMIT 10 OFFSET 10;
 
