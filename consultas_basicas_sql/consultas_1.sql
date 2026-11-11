@@ -71,3 +71,24 @@ SELECT film_id, title, description FROM film WHERE title LIKE '%love%'ORDER BY t
 -- los primeros 15 registros.
 
 SELECT address_id, address, district, postal_code FROM address WHERE district = 'California' or postal_code LIKE '9%' ORDER BY address_id ASC LIMIT 15;
+
+-- 17. Muestra el identificador y nombre de los países cuyo nombre comience con la letra A o con la letra B y cuyo
+-- identificador sea mayor que 20. Ordena los resultados alfabéticamente por país.
+
+SELECT country_id, country FROM country WHERE (country LIKE 'A%' or country LIKE 'B%') and country_id > 20 ORDER BY country ASC;
+
+-- 18. Muestra el identificador, título, duración, clasificación y precio de renta de las películas que duren más de 100
+-- minutos, estén clasificadas como PG-13 y tengan un precio de renta menor o igual a 2.99. Ordena por duración
+-- descendente y muestra los primeros 10 resultados.
+
+SELECT film_id, title, length, rating, rental_rate FROM film WHERE (length > 100) and (rating = 'PG-13') and (rental_rate <= 2.99) ORDER BY length DESC LIMIT 10;
+
+-- 19. Muestra el identificador, título y descripción de las películas cuya descripción contenga la palabra Drama,
+-- pero cuyo título no comience con la letra A. Ordena alfabéticamente por título y muestra únicamente las
+-- primeras 10.
+
+SELECT film_id, title, description FROM film WHERE (description LIKE '%Drama%') and (title NOT LIKE 'A%') ORDER BY title ASC LIMIT 10;
+
+-- 20. Muestra el identificador, nombre, apellido, correo electrónico e identificador de la tienda de los empleados
+-- activos que pertenezcan a la tienda 1 o a la tienda 2. Ordena por identificador del empleado.
+SELECT staff_id, first_name, last_name, email, store_id FROM staff WHERE (active = 1) AND (store_id = 1 or store_id = 2) ORDER BY staff_id ASC;
