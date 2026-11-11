@@ -41,3 +41,33 @@ SELECT * FROM category WHERE category_id = 1 or category_id = 3  or category_id 
 -- 10. Muestra el título, clasificación y precio de renta de las películas clasificadas como G, PG o PG-13. Ordena los
 -- resultados alfabéticamente por título y muestra únicamente las primeras 15. Con IN.
 SELECT title,rating,rental_rate FROM film WHERE rating IN ('G','PG','PG-13') ORDER BY title ASC LIMIT 15;
+
+-- 11. Muestra el identificador del inventario, identificador de la película e identificador de la tienda de las copias
+-- que no pertenezcan a la tienda 1. Ordena los resultados por identificador del inventario y muestra únicamente
+-- los primeros 15. Con IN.
+
+SELECT inventory_id, film_id, store_id FROM inventory WHERE store_id in ('1') ORDER BY inventory_id ASC LIMIT 15;
+
+-- 12. Muestra el identificador del pago, identificador del cliente y monto de los pagos cuyo monto no sea ninguno de
+-- los siguientes valores: 0.99, 2.99 o 4.99. Ordena los resultados por monto descendente y muestra únicamente
+-- los primeros 10. Sin IN.
+SELECT payment_id, customer_id, amount FROM payment WHERE amount != 0.99 and amount != 2.99 and amount != 4.99 ORDER BY amount DESC LIMIT 10;
+
+-- 13. Muestra el identificador, nombre y apellido de los actores cuyo nombre comience con la letra J. Ordena los
+-- resultados alfabéticamente por apellido.
+SELECT actor_id, first_name, last_name FROM actor WHERE first_name LIKE 'J%' ORDER BY last_name ASC;
+
+-- 14. Muestra el identificador, nombre, apellido y correo electrónico de los clientes cuyo apellido termine con la
+-- letra S. Ordena los resultados por apellido y después por nombre.
+
+SELECT customer_id, last_name, first_name, email FROM customer WHERE last_name LIKE '%S';
+
+-- 15. Muestra el identificador, título y descripción de las películas cuyo título contenga la palabra LOVE. Ordena los
+-- resultados alfabéticamente por título.
+SELECT film_id, title, description FROM film WHERE title LIKE '%love%'ORDER BY title ASC;
+
+-- 16. Muestra el identificador de la dirección, dirección, distrito y código postal de los domicilios cuyo distrito sea
+-- California o cuyo código postal comience con el número 9. Ordena por identificador de la dirección y muestra
+-- los primeros 15 registros.
+
+SELECT address_id, address, district, postal_code FROM address WHERE district = 'California' or postal_code LIKE '9%' ORDER BY address_id ASC LIMIT 15;
