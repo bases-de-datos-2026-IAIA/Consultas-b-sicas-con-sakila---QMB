@@ -92,3 +92,42 @@ SELECT film_id, title, description FROM film WHERE (description LIKE '%Drama%') 
 -- 20. Muestra el identificador, nombre, apellido, correo electrónico e identificador de la tienda de los empleados
 -- activos que pertenezcan a la tienda 1 o a la tienda 2. Ordena por identificador del empleado.
 SELECT staff_id, first_name, last_name, email, store_id FROM staff WHERE (active = 1) AND (store_id = 1 or store_id = 2) ORDER BY staff_id ASC;
+
+
+-- 21. Muestra el identificador de la renta, identificador del cliente, fecha de renta y fecha de devolución de las
+-- rentas realizadas desde el 24 hasta el 26 de mayo de 2005, incluyendo los tres días completos. Ordena por
+-- fecha de renta ascendente y muestra los primeros 15 registros.
+SELECT rental_id, customer_id, rental_date, return_date FROM rental WHERE (rental_date >= '2005-05-24'  and rental_date < '2005-05-27') ORDER BY rental_date ASC LIMIT 15;
+
+-- 22. Muestra el identificador del pago, identificador del cliente, monto y fecha de pago de los pagos mayores que
+-- 5.00, realizados por clientes cuyos identificadores estén entre 1 y 100. Ordena los resultados por monto
+-- descendente.
+
+SELECT payment_id, customer_id, amount, payment_date FROM payment
+WHERE amount > 5.00 AND customer_id BETWEEN 1 AND 100 ORDER BY amount DESC;
+
+-- 23. Muestra todos los datos de los registros que relacionan películas con actores, pero únicamente cuando el
+-- identificador del actor sea 1, 2 o 3. Ordena primero por identificador del actor y después por identificador de la
+-- película.
+
+SELECT * FROM film_actor WHERE actor_id IN (1, 2, 3)
+ORDER BY actor_id ASC, film_id ASC;
+
+-- 24. Muestra el identificador de la película, identificador de la categoría y fecha de última actualización de los
+-- registros que relacionan películas con categorías, excluyendo las categorías con identificadores 1, 2 y 3.
+-- Ordena por identificador de la película y muestra los primeros 20 resultados.
+SELECT film_id, category_id, last_update FROM film_category WHERE category_id NOT IN (1, 2, 3) ORDER BY film_id ASC LIMIT 20;
+
+-- 25. Muestra todos los datos de las tiendas cuyo identificador sea igual a 1 o cuyo encargado tenga el identificador 2
+--  Ordena los resultados por identificador de la tienda.
+SELECT * FROM store WHERE store_id = 1 OR manager_staff_id = 2 ORDER BY store_id ASC;
+
+-- 26. Muestra el identificador de la renta, identificador del cliente, fecha de renta y fecha de devolución de las
+-- películas que ya tengan registrada su fecha de devolución y que pertenezcan a clientes con identificador
+-- menor que 50. Ordena por fecha de renta descendente y muestra los primeros 10 resultados.
+
+SELECT rental_id, customer_id, rental_date, return_date FROM rental WHERE return_date IS NOT NULL AND customer_id < 50
+ORDER BY rental_date DESC LIMIT 10;
+
+
+
