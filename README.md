@@ -4,21 +4,8 @@ Repositorio para las actividades y prácticas de la unidad de aprendizaje **Base
 
 ## Datos del estudiante
 
-- **Nombre:**
-- **Grupo:**
-- **Periodo:** Agosto-Septiembre 2026
+- **Nombre:** Querén Mercado Bernardino.
+- **Grupo:**  301
 
-## Actividades
-
-En este repositorio se almacenarán las evidencias, archivos y prácticas realizadas durante el curso.
-
-### Organización
-
-Cada actividad deberá guardarse en su propia carpeta.
-
-Ejemplo:
-
-```text
-actividad-01/
-actividad-02/
-actividad-03/
+## Actividad
+Tarea: Consultas básicas con sakila en MYSQL Workbench.
